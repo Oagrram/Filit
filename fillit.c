@@ -16,34 +16,51 @@ static int	fillit(int fd)
 {
  	int i;
     char *line;
-    char *Tetrimino;
+    char *tmpter;
     int c;
+    //char **teriminos;
+    int j = 0;
 
 	c = 0; 
     i = 0;
-    Tetrimino = ft_strdup("");
-	while (get_next_line(fd, &line) > 0)
+   tmpter = ft_strdup("");
+	while (get_next_line(fd, &line) > 0 )
     {
-        Tetrimino = ft_strjoin(Tetrimino, line);
-         printf("(line[%d] == %s\n",i,line);
-        if(++i == 4)
+		tmpter = ft_strjoin(tmpter, line);
+        //printf("i == %d\n",i);
+        //printf("(line[%d] == %s\n",i,tmpter);
+      	printf("tmpter == %s\n",tmpter);
+        printf("i == %d\n",i);
+        if(++i == 5)
         {
+        	printf("tmpter == %s\n",tmpter);
+        	while(j++ < 16)
+        	{
+        	     printf("j == %d\n",j);
+				if(tmpter[j] == '\0')
+				{
+					tmpter[j] = '\n';
+					printf("tmpter[%d] == %s\n",j,tmpter);
+				}
+        	}
+        	j = 0;
+        	
         	c++;
-            if(!check_if_valid(Tetrimino))
+            if(!check_if_valid(tmpter))
             {
                 printf("invalid\n");
                 return (0);
             }
-            get_next_line(fd, &line);
-             printf("(line) == %s\n",line);
+          //  get_next_line(fd, &line);
+            printf("(line) == %s\n",line);
             printf("strlen (line) == %d\n",(int)ft_strlen(line));
             if(ft_strlen(line))
             {
             	printf("empty line\n");
             	return 0;
             }
-            Tetrimino = ft_strdup("");
-            i = -1;
+            tmpter = ft_strdup("");
+            i = 0;
         }
     }
    // if(c > 26 || )

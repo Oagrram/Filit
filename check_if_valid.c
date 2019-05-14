@@ -18,7 +18,7 @@ int check_if_valid(char *Tetrimino)
 
     i = -1;
     printf("len of ter = %d\n",(int)ft_strlen(Tetrimino));
-    if(ft_strlen(Tetrimino) != 16)
+    if(ft_strlen(Tetrimino) != 17)
         return (0);
     while(++i < 16)
     {
