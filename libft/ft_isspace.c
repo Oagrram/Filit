@@ -1,38 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print.c                                            :+:      :+:    :+:   */
+/*   ft_isspace.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aymhabib <aymhabib@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/05/17 23:50:41 by aymhabib          #+#    #+#             */
-/*   Updated: 2019/05/23 10:57:12 by aymhabib         ###   ########.fr       */
+/*   Created: 2019/05/20 22:51:42 by aymhabib          #+#    #+#             */
+/*   Updated: 2019/05/20 22:51:44 by aymhabib         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fillit.h"
+#include "libft.h"
 
-void	print_table(char **tab)
+int	ft_isspace(int c)
 {
-	int i;
-
-	i = 0;
-	while (tab[i])
-	{
-		ft_putstr(tab[i++]);
-		ft_putchar('\n');
-	}
-	return ;
-}
-
-void	print_table_x2(char ***doubletable)
-{
-	int i;
-
-	i = 0;
-	while (doubletable[i])
-	{
-		print_table(doubletable[i]);
-		i++;
-	}
+	if (c == '\t' || c == '\n' || c == '\v' ||
+			c == '\f' || c == '\r' || c == ' ')
+		return (1);
+	else
+		return (0);
 }

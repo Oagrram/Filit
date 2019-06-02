@@ -6,7 +6,7 @@
 #    By: aymhabib <aymhabib@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/01/16 02:00:08 by aymhabib          #+#    #+#              #
-#    Updated: 2019/05/21 00:51:20 by aymhabib         ###   ########.fr        #
+#    Updated: 2019/05/30 05:33:51 by aymhabib         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,13 +14,13 @@ NAME = fillit
 
 LIB = libft.a
 
-SRC = *.c
+SRC = fillit.c print.c split_and_cord.c split_the_tet.c validating.c backtracking.c backtrack_add_func.c
 
 LIBSRC = libft/*.c
 
-INCLDS = *.h
+INCLDS = fillit.h
 
-LIBINCLDS = libft/*.h
+LIBINCLDS = libft/libft.h
 
 FLAG = -Wall -Wextra -Werror
 
@@ -31,11 +31,10 @@ $(NAME): $(LIB)
 
 $(LIB):
 		gcc $(FLAG) -c $(LIBSRC) -I $(LIBINCLDS)
-		ar rc $(LIB) ft_*.o
-
+		ar rc $(LIB) *.o
 clean:
 		/bin/rm -f *.o
-		/bin/rm -rf .DS_Store
+		/bin/rm -f .DS_Store
 
 fclean: clean
 		/bin/rm -f $(NAME)

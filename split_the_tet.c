@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: aymhabib <aymhabib@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/01/07 21:59:54 by aymhabib          #+#    #+#             */
-/*   Updated: 2019/05/22 23:14:55 by aymhabib         ###   ########.fr       */
+/*   Created: 2019/05/17 21:59:54 by aymhabib          #+#    #+#             */
+/*   Updated: 2019/05/25 22:50:13 by aymhabib         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	ft_limits(char *tetriminos, int *minx, int *miny)
 	{
 		if (tetriminos[i] == '#')
 		{
-			get_cordinant(&x, &y, i);
+			cordination(&x, &y, i);
 			if (x < *minx)
 				*minx = x;
 			if (y < *miny)
@@ -58,7 +58,7 @@ char	**fill_table(void)
 	return (tetris);
 }
 
-char	**ft_spliiiit(char *tetriminos, char c)
+char	**fill(char *tetriminos, char c)
 {
 	int		i;
 	int		cord[2];
@@ -66,25 +66,16 @@ char	**ft_spliiiit(char *tetriminos, char c)
 	int		y;
 	char	**tetris;
 
-	
 	ft_limits(tetriminos, &cord[0], &cord[1]);
 	tetris = fill_table();
 	i = 0;
 	while (tetriminos[i])
 	{
-		printf("spliiit tet[%d] == %c\n",i,tetriminos[i]);
 		if (tetriminos[i] == '#')
 		{
-			get_cordinant(&x, &y, i);
+			cordination(&x, &y, i);
 			tetris[y - cord[1]][x - cord[0]] = c;
 		}
-		i++;
-	}
-	 i = 0;
-	 printf("spliiit tet == %s\n",tetriminos);
-	while (tetriminos[i])
-	{
-		printf("spliiit tet[%d] == %c\n",i,tetriminos[i]);
 		i++;
 	}
 	return (tetris);

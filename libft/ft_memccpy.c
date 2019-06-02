@@ -1,38 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print.c                                            :+:      :+:    :+:   */
+/*   ft_memccpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aymhabib <aymhabib@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aymhabib <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/05/17 23:50:41 by aymhabib          #+#    #+#             */
-/*   Updated: 2019/05/23 10:57:12 by aymhabib         ###   ########.fr       */
+/*   Created: 2019/04/02 16:16:38 by aymhabib          #+#    #+#             */
+/*   Updated: 2019/04/02 16:17:03 by aymhabib         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fillit.h"
+#include "libft.h"
 
-void	print_table(char **tab)
+void	*ft_memccpy(void *dst, const void *src, int c, size_t n)
 {
-	int i;
+	size_t i;
 
 	i = 0;
-	while (tab[i])
+	while (i < n)
 	{
-		ft_putstr(tab[i++]);
-		ft_putchar('\n');
-	}
-	return ;
-}
-
-void	print_table_x2(char ***doubletable)
-{
-	int i;
-
-	i = 0;
-	while (doubletable[i])
-	{
-		print_table(doubletable[i]);
+		((unsigned char *)dst)[i] = ((unsigned char *)src)[i];
+		if (((unsigned char *)src)[i] == (unsigned char)c)
+			return ((void *)(dst + i + 1));
 		i++;
 	}
+	return (NULL);
 }

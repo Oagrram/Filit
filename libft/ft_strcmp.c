@@ -1,38 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print.c                                            :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aymhabib <aymhabib@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aymhabib <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/05/17 23:50:41 by aymhabib          #+#    #+#             */
-/*   Updated: 2019/05/23 10:57:12 by aymhabib         ###   ########.fr       */
+/*   Created: 2019/04/02 20:50:45 by aymhabib          #+#    #+#             */
+/*   Updated: 2019/04/02 21:15:57 by aymhabib         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fillit.h"
+#include "libft.h"
 
-void	print_table(char **tab)
+int		ft_strcmp(const char *s1, const char *s2)
 {
 	int i;
 
 	i = 0;
-	while (tab[i])
-	{
-		ft_putstr(tab[i++]);
-		ft_putchar('\n');
-	}
-	return ;
-}
-
-void	print_table_x2(char ***doubletable)
-{
-	int i;
-
-	i = 0;
-	while (doubletable[i])
-	{
-		print_table(doubletable[i]);
+	while (((unsigned char *)s1)[i] && ((unsigned char *)s2)[i]
+			&& ((unsigned char *)s1)[i] == ((unsigned char *)s2)[i])
 		i++;
-	}
+	return (((unsigned char *)s1)[i] - ((unsigned char *)s2)[i]);
 }

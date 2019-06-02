@@ -1,38 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print.c                                            :+:      :+:    :+:   */
+/*   ft_words_count.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aymhabib <aymhabib@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/05/17 23:50:41 by aymhabib          #+#    #+#             */
-/*   Updated: 2019/05/23 10:57:12 by aymhabib         ###   ########.fr       */
+/*   Created: 2019/05/20 22:54:18 by aymhabib          #+#    #+#             */
+/*   Updated: 2019/05/20 22:54:20 by aymhabib         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fillit.h"
+#include "libft.h"
 
-void	print_table(char **tab)
+int	ft_words_count(const char *str, char c)
 {
-	int i;
+	unsigned int	i;
+	unsigned int	nb;
 
-	i = 0;
-	while (tab[i])
+	nb = 0;
+	i = 1;
+	if (str[0] && str[0] != c)
+		nb++;
+	while (str[i])
 	{
-		ft_putstr(tab[i++]);
-		ft_putchar('\n');
-	}
-	return ;
-}
-
-void	print_table_x2(char ***doubletable)
-{
-	int i;
-
-	i = 0;
-	while (doubletable[i])
-	{
-		print_table(doubletable[i]);
+		if (str[i] != c && str[i - 1] == c)
+			nb++;
 		i++;
 	}
+	return (nb);
 }

@@ -1,38 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print.c                                            :+:      :+:    :+:   */
+/*   ft_strcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aymhabib <aymhabib@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aymhabib <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/05/17 23:50:41 by aymhabib          #+#    #+#             */
-/*   Updated: 2019/05/23 10:57:12 by aymhabib         ###   ########.fr       */
+/*   Created: 2019/04/02 16:50:29 by aymhabib          #+#    #+#             */
+/*   Updated: 2019/04/02 16:50:55 by aymhabib         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fillit.h"
+#include "libft.h"
 
-void	print_table(char **tab)
+char	*ft_strcpy(char *dest, const char *src)
 {
 	int i;
 
 	i = 0;
-	while (tab[i])
+	while (src[i])
 	{
-		ft_putstr(tab[i++]);
-		ft_putchar('\n');
-	}
-	return ;
-}
-
-void	print_table_x2(char ***doubletable)
-{
-	int i;
-
-	i = 0;
-	while (doubletable[i])
-	{
-		print_table(doubletable[i]);
+		dest[i] = src[i];
 		i++;
 	}
+	dest[i] = '\0';
+	return (dest);
 }

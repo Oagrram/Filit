@@ -5,14 +5,14 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: aymhabib <aymhabib@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/13 14:40:40 by aymhabib          #+#    #+#             */
-/*   updated: 2019/05/22 23:55:36 by oagrram          ###   ########.fr       */
+/*   Created: 2019/05/13 14:40:40 by aymhabib          #+#    #+#             */
+/*   Updated: 2019/05/25 22:49:34 by aymhabib         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-int		tet_nb(char *file)
+int		number_of_tetriminos(char *file)
 {
 	int i;
 	int nb;
@@ -54,14 +54,12 @@ char	***if_valid(int nb, char **tetriminos)
 	char	***tetris;
 
 	tetris = (char ***)malloc(sizeof(**tetris) * (nb + 1));
-	//printf("sizeof(tetris) == %lu\n",(sizeof(**tetris) * (nb + 1)));
 	if (!tetris)
 		return (NULL);
 	i = 0;
 	while (i < nb)
 	{
-	//	printf("tetriminos[%d] ==  \n%s",i,tetriminos[i]);
-		tetris[i] = ft_spliiiit(tetriminos[i], 'A' + i);
+		tetris[i] = fill(tetriminos[i], 'A' + i);
 		i++;
 	}
 	tetris[nb] = NULL;
@@ -72,7 +70,7 @@ char	***if_valid(int nb, char **tetriminos)
 void	error(void)
 {
 	ft_putstr("error\n");
-	exit(42);
+	exit(1);
 }
 
 int		main(int argc, char **argv)
@@ -89,12 +87,12 @@ int		main(int argc, char **argv)
 		if (fd < 0 || (read(fd, NULL, 0) < 0))
 			error();
 		file = read_file(fd);
-		nb = tet_nb(file);
+		nb = number_of_tetriminos(file);
 		tetriminos = split(file, nb);
 		if (validating(file, tetriminos, nb))
 		{
 			tetris = if_valid(nb, tetriminos);
-			ft_solve(tetris, nb);
+			solve(tetris, nb);
 		}
 		else
 			error();

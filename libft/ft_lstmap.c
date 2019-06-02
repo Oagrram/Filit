@@ -1,38 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print.c                                            :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aymhabib <aymhabib@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/05/17 23:50:41 by aymhabib          #+#    #+#             */
-/*   Updated: 2019/05/23 10:57:12 by aymhabib         ###   ########.fr       */
+/*   Created: 2019/05/20 22:52:46 by aymhabib          #+#    #+#             */
+/*   Updated: 2019/05/20 22:52:49 by aymhabib         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fillit.h"
+#include "libft.h"
 
-void	print_table(char **tab)
+t_list	*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem))
 {
-	int i;
+	t_list *head;
+	t_list *tmp;
 
-	i = 0;
-	while (tab[i])
+	if (!(lst && *f))
+		return (NULL);
+	head = f(lst);
+	tmp = head;
+	if (!head)
+		return (NULL);
+	while (lst->next)
 	{
-		ft_putstr(tab[i++]);
-		ft_putchar('\n');
+		lst = lst->next;
+		if (!(tmp->next = f(lst)))
+			return (NULL);
+		tmp = tmp->next;
 	}
-	return ;
-}
-
-void	print_table_x2(char ***doubletable)
-{
-	int i;
-
-	i = 0;
-	while (doubletable[i])
-	{
-		print_table(doubletable[i]);
-		i++;
-	}
+	return (head);
 }

@@ -1,38 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print.c                                            :+:      :+:    :+:   */
+/*   ft_ilen.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aymhabib <aymhabib@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/05/17 23:50:41 by aymhabib          #+#    #+#             */
-/*   Updated: 2019/05/23 10:57:12 by aymhabib         ###   ########.fr       */
+/*   Created: 2019/05/20 22:51:18 by aymhabib          #+#    #+#             */
+/*   Updated: 2019/05/20 22:51:24 by aymhabib         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fillit.h"
+#include "libft.h"
 
-void	print_table(char **tab)
+int		ft_ilen(int n)
 {
-	int i;
+	unsigned int	len;
+	unsigned int	nb;
+	int				signe;
 
-	i = 0;
-	while (tab[i])
+	len = 1;
+	signe = 1;
+	if (n < 0)
 	{
-		ft_putstr(tab[i++]);
-		ft_putchar('\n');
+		signe = -1;
+		len++;
 	}
-	return ;
-}
-
-void	print_table_x2(char ***doubletable)
-{
-	int i;
-
-	i = 0;
-	while (doubletable[i])
+	nb = n * signe;
+	while (nb > 9)
 	{
-		print_table(doubletable[i]);
-		i++;
+		nb = nb / 10;
+		len++;
 	}
+	return (len);
 }

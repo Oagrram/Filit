@@ -1,38 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print.c                                            :+:      :+:    :+:   */
+/*   ft_strsub.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aymhabib <aymhabib@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aymhabib <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/05/17 23:50:41 by aymhabib          #+#    #+#             */
-/*   Updated: 2019/05/23 10:57:12 by aymhabib         ###   ########.fr       */
+/*   Created: 2019/04/09 15:48:14 by aymhabib          #+#    #+#             */
+/*   Updated: 2019/04/09 16:42:19 by aymhabib         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fillit.h"
+#include "libft.h"
 
-void	print_table(char **tab)
+char	*ft_strsub(char const *s, unsigned int start, size_t len)
 {
-	int i;
+	char	*a;
+	size_t	i;
 
+	a = (char *)malloc(sizeof(*a) * (len + 1));
+	if (a == NULL || s == NULL)
+		return (NULL);
 	i = 0;
-	while (tab[i])
+	while (i < len)
 	{
-		ft_putstr(tab[i++]);
-		ft_putchar('\n');
-	}
-	return ;
-}
-
-void	print_table_x2(char ***doubletable)
-{
-	int i;
-
-	i = 0;
-	while (doubletable[i])
-	{
-		print_table(doubletable[i]);
+		a[i] = s[start + i];
 		i++;
 	}
+	a[i] = '\0';
+	return (a);
 }

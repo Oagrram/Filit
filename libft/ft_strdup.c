@@ -1,38 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print.c                                            :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aymhabib <aymhabib@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aymhabib <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/05/17 23:50:41 by aymhabib          #+#    #+#             */
-/*   Updated: 2019/05/23 10:57:12 by aymhabib         ###   ########.fr       */
+/*   Created: 2019/04/02 16:38:12 by aymhabib          #+#    #+#             */
+/*   Updated: 2019/04/02 16:38:41 by aymhabib         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fillit.h"
+#include "libft.h"
 
-void	print_table(char **tab)
+char	*ft_strdup(const char *src)
 {
-	int i;
+	char	*dest;
+	int		i;
 
+	if (!(dest = (char *)malloc((ft_strlen(src) + 1) * sizeof(char))))
+		return (NULL);
 	i = 0;
-	while (tab[i])
+	while (src[i])
 	{
-		ft_putstr(tab[i++]);
-		ft_putchar('\n');
-	}
-	return ;
-}
-
-void	print_table_x2(char ***doubletable)
-{
-	int i;
-
-	i = 0;
-	while (doubletable[i])
-	{
-		print_table(doubletable[i]);
+		dest[i] = ((char *)src)[i];
 		i++;
 	}
+	dest[i] = '\0';
+	return (dest);
 }

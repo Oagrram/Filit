@@ -6,7 +6,7 @@
 /*   By: aymhabib <aymhabib@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/17 23:50:16 by aymhabib          #+#    #+#             */
-/*   Updated: 2019/05/22 23:09:33 by aymhabib         ###   ########.fr       */
+/*   Updated: 2019/05/30 01:28:13 by aymhabib         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,13 +38,13 @@ char	**split(char *file, int nb)
 	return (tetriminos);
 }
 
-void	get_cordinant(int *x, int *y, int n)
+void	cordination(int *x, int *y, int n)
 {
 	*y = n / 5;
 	*x = n % 5;
 }
 
-int		is_neiber(char *tet)
+int		is_cousin(char *tet)
 {
 	int count;
 	int i;
@@ -57,7 +57,7 @@ int		is_neiber(char *tet)
 		{
 			if (tet[i + 1] == '#')
 				count++;
-			if (tet[i + 5] == '#')
+			if (tet[i + 5] == '#' && i < 15)
 				count++;
 		}
 		i++;
